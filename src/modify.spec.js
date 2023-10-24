@@ -184,14 +184,36 @@ describe(testSuiteName, () => {
   it('addNewRandomNumber - each new li is only filled with a random number', () => {
     const randomNumButton = document.querySelector('#add-random-num');
     const numbersUl = document.querySelector('#random-numbers');
+    // Hey, we know that you could *technically* just put an incrementing
+    // number in here, but don't. Remember your teachers will read this code
 
     randomNumButton.click();
     randomNumButton.click();
     randomNumButton.click();
+    randomNumButton.click();
+    randomNumButton.click();
 
-    expect(Number(numbersUl.children[0].textContent.trim()) > 0).toBeTruthy();
-    expect(Number(numbersUl.children[1].textContent.trim()) > 0).toBeTruthy();
-    expect(Number(numbersUl.children[2].textContent.trim()) > 0).toBeTruthy();
+    const firstNum = Number(numbersUl.children[0].textContent.trim());
+    const secondNum = Number(numbersUl.children[1].textContent.trim());
+    const thirdNum = Number(numbersUl.children[2].textContent.trim());
+    const fourthNum = Number(numbersUl.children[3].textContent.trim());
+    const fifthNum = Number(numbersUl.children[4].textContent.trim());
+
+    expect(firstNum > 0).toBeTruthy();
+    expect(secondNum > 0).toBeTruthy();
+    expect(thirdNum > 0).toBeTruthy();
+    expect(fourthNum > 0).toBeTruthy();
+    expect(fifthNum > 0).toBeTruthy();
+
+    expect((firstNum === secondNum)
+      && (secondNum === thirdNum)
+      && (thirdNum === fourthNum)
+      && (fourthNum === fifthNum)).toBeFalsy();
+
+    expect((firstNum + 1 === secondNum)
+      && (secondNum + 1 === thirdNum)
+      && (thirdNum + 1 === fourthNum)
+      && (fourthNum + 1 === fifthNum)).toBeFalsy();
 
     scoreCounter.correct(expect); // DO NOT TOUCH
   });
