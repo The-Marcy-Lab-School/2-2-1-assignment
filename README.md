@@ -24,10 +24,10 @@ Don't forget to do them! They go over bigger concepts than just the code.
 
 
 # Question 1: clickCounterHandler - modify.js
-As you can see in our HTML we have a button `#click-button`. Each time you click on the button, the `data-clicks` attribute should be incremented and the text of the button should show the number of times it has been clicked.
+As you can see in our HTML, we have a button `#click-button` with a `data-clicks` attribute. Each time you click on the button, the `data-clicks` attribute should be incremented, and the button text should show the number of times it has been clicked.
 
-1. Inside of the `main` function, register a `"click"` event listener to the `#click-button` button that uses the function `clickCounterHandler`.
-2. `clickCounterHandler` should...
+1. Inside the `main` function, register a `click` event listener for the `#click-button` button that uses the function `clickCounterHandler`.
+2. Inside of `clickCounterHandler`, it should...
     - increment the value of the `data-clicks` attribute on the clicked button (how can you get the element that was clicked?)
     - update the text of the clicked button to tell us how many times it's been clicked (check out the tests to see exactly what we want the button to say)
 
