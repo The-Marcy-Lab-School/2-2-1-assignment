@@ -24,11 +24,38 @@ Don't forget to do them! They go over bigger concepts than just the code.
 
 
 # Question 1: clickCounterHandler - modify.js
-As you can see in our HTML we have a button `#click-button`. Create a click event listener that uses a function `clickCounterHandler` to track the number of clicks. With each click of the button 2 things should happen:
-- update the data-clicks attribute on the button with the right number
-- update the text of the button to tell us how many times its been clicked
+As you can see in our HTML we have a button `#click-button`. Each time you click on the button, the `data-clicks` attribute should be incremented and the text of the button should show the number of times it has been clicked.
 
-BE CAREFUL! Read the tests to see *exactly* what the text content should be! Also remember that data attributes come from the HTML as strings.
+1. Inside of the `main` function, register a `"click"` event listener to the `#click-button` button that uses the function `clickCounterHandler`.
+2. `clickCounterHandler` should...
+    - increment the value of the `data-clicks` attribute on the clicked button (how can you get the element that was clicked?)
+    - update the text of the clicked button to tell us how many times it's been clicked (check out the tests to see exactly what we want the button to say)
+
+<details><summary>Hints!</summary>
+  
+> **Notes about `data-` attributes**:
+> 1. Remember that `data-` attributes come from the HTML as strings so you may need to convert the string to a number before incrementing!
+> 2. `data-` attributes can be accessed from a selected element using the `.dataset` property
+> 3. `data-` attribute names are converted to camelCase. For example, the `data-my-name` attribute would be converted to `.dataset.myName` on the element.
+> 
+> **Use the `event` object**:
+> * The `event.target` value can be used to tell you which element was clicked (or, more generally, which element triggered the event)
+> 
+> ```js
+> const printTheTarget = (event) => {
+>   console.log(event.target);
+>   // ▲ this is much better than querying for the clicked element
+>
+>   // ▼ this is the same value as event.target but with much more code
+>   const target = document.querySelector("#thingy");
+>   console.log(target);
+> }
+> 
+> document.querySelector("#thingy").addEventListener("click", printTheTarget);
+> ```
+
+</details>
+
 
 # Question 2: handleKeydown - modify.js
 With a key event listener on the `body`, use `handleKeydown` to track the last key code pressed. Then, modify the text content of the `p` tag with an id of `keydown-tracker`. Check the tests to see *exactly* what the text content of the tag should be. Investigate the `event` to see where you could grab the information you need.
